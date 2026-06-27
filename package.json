@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "vite build && rm -rf server/dist && mv dist server/",
+    "build": "vite build --outDir server/dist/public",
     "dev:server": "cd server && pnpm dev"
   },
   "dependencies": {

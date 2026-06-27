@@ -122,12 +122,13 @@ program
       }
     }
 
-    const staticDir = resolve(__dirname, '../dist')
+    const staticDir = resolve(__dirname, 'public')
+    const staticDirFinal = existsSync(staticDir) ? staticDir : resolve(__dirname, '../dist/public')
     const app = createApp(
       {
         filesRoot,
         adminPassword,
-        staticDir,
+        staticDir: staticDirFinal,
       },
       service,
     )
