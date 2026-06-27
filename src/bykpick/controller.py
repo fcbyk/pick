@@ -6,7 +6,7 @@ from pathlib import Path
 import click
 from flask import jsonify, request, send_file, url_for, Response
 
-from byksdk import create_spa
+from .byksdk import create_spa
 from .service import PickService
 
 SERVER_SESSION_ID = str(uuid.uuid4())
