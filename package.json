@@ -9,16 +9,12 @@
     "build": "vite build --outDir server/dist/public && node scripts/build-server.mjs",
     "build:client": "vite build --outDir server/dist/public",
     "build:server": "node scripts/build-server.mjs",
-    "start": "cd server && node dist/index.cjs"
+    "start": "cd server && node dist/index.cjs",
+    "pack": "cd server && pnpm pack"
   },
   "dependencies": {
     "vue": "^3.4.0",
     "vue-router": "^4.6.4"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
