@@ -17,9 +17,5 @@ dependencies = [
     "psutil>=5.9.0",
 ]
 
-[tool.setuptools]
-package-dir = {"" = "src"}
-packages = { find = { where = ["src"], include = ["bykpick*"] } }
-
 [tool.setuptools.package-data]
 bykpick = ["dist/**/*"]

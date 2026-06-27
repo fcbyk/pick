@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "vite build && rm -rf ../src/bykpick/dist && mv dist ../src/bykpick/"
+    "build": "vite build && rm -rf server/bykpick/dist && mv dist server/bykpick/"
   },
   "dependencies": {
     "vue": "^3.4.0",
