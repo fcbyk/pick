@@ -6,21 +6,13 @@
     "dist"
   ],
   "bin": {
-    "pick": "./dist/index.js"
-  },
-  "scripts": {
-    "build": "tsc",
-    "dev": "tsx src/index.ts",
-    "start": "node dist/index.js"
-  },
-  "dependencies": {
-    "commander": "^12.1.0",
-    "express": "^4.21.0",
-    "open": "^11.0.0"
+    "pick": "./dist/index.cjs"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^20.19.27",
+    "commander": "^12.1.0",
+    "express": "^4.21.0",
     "tsx": "^4.19.0",
     "typescript": "^5.3.0"
   }

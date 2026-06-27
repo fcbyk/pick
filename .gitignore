@@ -1,61 +1,7 @@
-# ===== Python =====
-*.pyc
-*.pyo
-*.egg
-*.egg-info/
-__pycache__/
-.pytest_cache/
-.coverage
-.venv/
+node_modules/
 dist/
-build/
-downloads/
+*.log
 
-# ===== IDE / Editor =====
 .idea/
 .vscode/
-.obsidian/
 .DS_Store
-
-# ===== Node / Frontend =====
-node_modules/
-.nuxt/
-.output/
-.pnpm-store/
-*/.vitepress/cache
-docs/pnpm-lock.yaml
-
-# ===== Project-specific =====
-python/bykcli/web/static
-.workbuddy/
-.data
-book/
-doc_build/
-website/
-target/
-
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-

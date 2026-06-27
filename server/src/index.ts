@@ -1,8 +1,7 @@
-#!/usr/bin/env node
 import { Command } from 'commander'
 import { resolve } from 'node:path'
 import { existsSync } from 'node:fs'
-import { execSync } from 'node:child_process'
+import { exec, execSync } from 'node:child_process'
 import { createInterface } from 'node:readline'
 import { fileURLToPath } from 'node:url'
 import { createApp } from './app.js'
@@ -11,7 +10,11 @@ import { getPluginStateStore } from './lib/state-store.js'
 import { getPrivateNetworks, isPortAvailable } from './lib/network.js'
 import { generateRandomString } from './lib/utils.js'
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url))
+function getDirname(): string {
+  try { return __dirname } catch {}
+  return fileURLToPath(new URL('.', import.meta.url))
+}
+const __dirname = getDirname()
 
 function copyToClipboard(text: string): boolean {
   try {
@@ -28,13 +31,14 @@ function copyToClipboard(text: string): boolean {
   }
 }
 
-async function openBrowser(url: string): Promise<void> {
-  try {
-    const { default: open } = await import('open')
-    await open(url)
-  } catch {
-    console.log(' Note: Could not auto-open browser, please visit the URL above')
-  }
+function openBrowser(url: string): void {
+  const cmd =
+    process.platform === 'darwin'
+      ? `open "${url}"`
+      : process.platform === 'win32'
+        ? `start "" "${url}"`
+        : `xdg-open "${url}"`
+  exec(cmd)
 }
 
 function echoNetworkUrls(networks: ReturnType<typeof getPrivateNetworks>, port: number): void {
@@ -154,12 +158,8 @@ program
       if (!options.browser) return
 
       if (await waitForServerReady(port)) {
-        try {
-          await openBrowser(urlNetwork)
-          console.log(' Attempted to open picker page in browser')
-        } catch {
-          console.log(' Note: Could not auto-open browser, please visit the URL above')
-        }
+        openBrowser(urlNetwork)
+        console.log(' Attempted to open picker page in browser')
       } else {
         console.log(' Note: Server didn\'t respond in time, please open the URL above manually')
       }
